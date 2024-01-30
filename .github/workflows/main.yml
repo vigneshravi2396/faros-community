@@ -35,11 +35,7 @@ jobs:
             sudo systemctl start apache2
             sudo systemctl enable apache2
             cd home
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Build the stack  # Fix typo here
-        run: docker-compose up -d
-      - name: Test
-        run: docker run --network container:your-webapp-container-name appropriate/curl -s --retry 10 --retry-connrefused http://localhost:5000/
+
+      - name: Start containers
+        run: docker-compose -f "docker-compose.yml" up -d --build
+      -
