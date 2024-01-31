@@ -37,4 +37,4 @@ jobs:
             cd home
 
       - name: Start containers
-        run: docker-compose -f "docker-compose.yaml" up -d --build
+        run: "hello world"
