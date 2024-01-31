@@ -39,5 +39,26 @@ jobs:
       - name: Checkout the files
         uses: actions/checkout@v2
             
-      - name: workspace
-        run: echo "${{ toJson(github.event) }}"
+   name: Push-to-EC2
+
+# Trigger deployment only on push to main branch
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Deploy to EC2 on master branch push
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the files
+        uses: actions/checkout@v2
+
+    
+            
+      - name: docker up     
+        run: docker-compose -f "docker-compose.yaml" up -d --build
+     
+
