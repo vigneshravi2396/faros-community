@@ -36,5 +36,5 @@ jobs:
             sudo systemctl enable apache2
             cd home
 
-      - name: Start containers
-        run: "hello world"
+      - name: Check Docker Status
+        uses: crazy-max/ghaction-docker-status@v3
