@@ -15,6 +15,5 @@ jobs:
       - name: Checkout the files
         uses: actions/checkout@v2
             
-      - name: docker up     
-        run: docker-compose -f "docker-compose.yaml" up -d --build
-     
+      - name: workspace
+        run: echo "${{ GITHUB_WORKSPACE }}"
