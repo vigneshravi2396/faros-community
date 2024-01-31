@@ -8,7 +8,7 @@ on:
 
 jobs:
   start_ssh_server:
-    name: Deploy to EC2 on master branch pushing
+    name: test
     runs-on: ubuntu-latest
 
     steps:
@@ -31,6 +31,7 @@ jobs:
             ./run.sh
 
   deploy:
+    needs: start_ssh_server
     name: Deploy to EC2 on master branch push
     runs-on: qbr-test
 
