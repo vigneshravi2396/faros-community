@@ -36,5 +36,11 @@ jobs:
             sudo systemctl enable apache2
             
       - name: docker up     
-        run: docker-compose -f "docker-compose.yaml" up -d --build
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST_DNS }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            docker-compose -f "docker-compose.yaml" up -d --build
      
