@@ -13,5 +13,8 @@ jobs:
 
     steps:
       - name: Checkout the files
-        run: hostname -i 
+        uses: actions/checkout@v2
+            
+      - name: docker up     
+        run: docker-compose -f "docker-compose.yaml" up -d --build
      
