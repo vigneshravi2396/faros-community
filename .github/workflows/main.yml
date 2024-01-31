@@ -34,7 +34,20 @@ jobs:
             sudo apt-get install -y apache2
             sudo systemctl start apache2
             sudo systemctl enable apache2
-            cd home
-
-      - name: Check Docker Status
-        uses: crazy-max/ghaction-docker-status@v3
+           
+      - name: Checkout
+        uses: actions/checkout@v1
+  
+      - name: Start containers
+        run: docker-compose -f "docker-compose.yml" up -d --build
+  
+      - name: Install node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+  
+      - name: Install dependencies
+        run: npm install
+  
+      - name: Run tests
+        run: npm run test
